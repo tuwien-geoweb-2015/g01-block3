@@ -1,0 +1,76 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gruppe1 - Exercise 2</title>
+<meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://openlayers.org/en/v3.10.1/css/ol.css" type="text/css">
+<script src="http://openlayers.org/en/v3.10.1/build/ol.js"></script>
+
+<style>
+    .map {
+        height: 600px;
+        width:100%;
+        margin: 0px;}
+    
+    html, body {
+        margin: 10px;
+        height: 100%;}
+    
+    h2 {
+    text-align: center;
+    }
+
+
+</style>    
+    
+</head>
+<body>
+<h2>Gruppe 1</h2> <br>
+
+<div class="row">
+  <div class="col-sm-4"><div id="map" class="map"></div></div>
+  <div class="col-sm-4"> <img src="img/anna.jpg" width="200px" height="200px"> <br>
+                            <img src="img/christina.jpg" width="200px" height="200px"> <br>
+                            <img src="img/manuel.JPG" width="200px" height="200px">
+    
+    </div>
+    <div class="col-sm-4"> <br><br><br><br> <strong>Anna Logar</strong> | 1226113 <br><br><br><br><br><br><br><br><br><br>
+                        <strong>Christina Grießler</strong> | 1127356 <br><br><br><br><br><br><br><br><br><br><br>
+                        <strong>Manuel Oberaufner</strong> | 1225481
+    </div>
+</div>
+   
+    
+ 
+<script>
+var vectorSource = new ol.source.Vector({
+  url: 'data/geojson/countries.geojson',
+  format: new ol.format.GeoJSON()
+});
+
+
+var map = new ol.Map({
+  layers: [
+    new ol.layer.Tile({
+      source: new ol.source.OSM()
+    }),
+      
+    new ol.layer.Vector({
+  source: new ol.source.Vector({
+    format: new ol.format.GeoJSON(),
+    url: 'https://gist.githubusercontent.com/anonymous/ddba5894b49c41e8a95f/raw/76b318f62b12294d631ed44db9d6ad1898825dbc/map.geojson'})})
+  ],
+  renderer: 'canvas',
+  target: 'map',
+  view: new ol.View({
+    center: ol.proj.fromLonLat([16.3983126, 48.1718887]),
+    zoom: 11})
+});
+</script>
+</body>
+</html>
